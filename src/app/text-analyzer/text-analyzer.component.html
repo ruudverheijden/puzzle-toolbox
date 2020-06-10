@@ -11,6 +11,9 @@
     </tr>
     <tr>
         <td>Unique characters:</td>
-        <td><span *ngFor="let uniqueChar of result.uniqueChars">{{ uniqueChar }} </span></td>
+        <td><span *ngFor="let uniqueChar of result.uniqueChars">{{uniqueChar}} </span></td>
     </tr>
 </table>
+
+Frequency: <br/>
+<app-frequency-analysis [textToAnalyze]='textToAnalyze'></app-frequency-analysis>
