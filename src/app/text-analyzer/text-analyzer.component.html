@@ -13,7 +13,11 @@
         <td>Unique characters:</td>
         <td><span *ngFor="let uniqueChar of result.uniqueChars">{{uniqueChar}} </span></td>
     </tr>
+    <tr>
+        <td>Unique chunks:</td>
+        <td><span *ngFor="let uniqueChunk of result.uniqueChunks">{{uniqueChunk}} </span></td>
+    </tr>
 </table>
 
 Frequency: <br/>
-<app-frequency-analysis [textToAnalyze]='textToAnalyze'></app-frequency-analysis>
+<app-frequency-analysis [textToAnalyze]="textToAnalyze" (uniqueChunksEvent)="updateUniqueChunks($event)"></app-frequency-analysis>

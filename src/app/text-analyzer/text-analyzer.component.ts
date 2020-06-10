@@ -11,7 +11,8 @@ export class TextAnalyzerComponent implements OnInit {
   result = {
     numberOfChars: 0,
     uniqueChars: [],
-    numberOfUniqueChars: 0
+    numberOfUniqueChars: 0,
+    uniqueChunks: []
   };
 
   constructor() { }
@@ -32,6 +33,10 @@ export class TextAnalyzerComponent implements OnInit {
   private getUniqueChars(): void {
     this.result.uniqueChars = _.sortedUniq(_.sortBy(this.textToAnalyze));
     this.result.numberOfUniqueChars = this.result.uniqueChars.length;
+  }
+
+  updateUniqueChunks(uniqueChunks: string[]): void {
+    this.result.uniqueChunks = uniqueChunks;
   }
 
 }

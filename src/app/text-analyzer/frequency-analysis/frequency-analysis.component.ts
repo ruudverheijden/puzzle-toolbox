@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, SimpleChanges, OnChanges, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
@@ -7,10 +7,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   templateUrl: './frequency-analysis.component.html',
   styleUrls: ['./frequency-analysis.component.sass']
 })
-export class FrequencyAnalysisComponent implements OnInit {
+export class FrequencyAnalysisComponent implements OnInit, OnChanges {
   @Input() textToAnalyze: string;
-  @Output() chunks: string[];
-  @Output() uniqueChunks: string[];
+  @Output() uniqueChunksEvent = new EventEmitter<string[]>(true); // using async events to prevent Angular change detection issues
 
   chunkSize = 2;
   ignoreSpaces = true;
@@ -34,9 +33,10 @@ export class FrequencyAnalysisComponent implements OnInit {
   }
 
   private getChunks(): void {
-    this.chunks = _.sortBy(this.textToAnalyze.match(new RegExp('.{1,' + this.chunkSize + '}', 'g')));
-    this.uniqueChunks = _.uniq(this.chunks);
-    console.log(this.chunks);
+    const chunkSizeRegex = new RegExp('.{1,' + this.chunkSize + '}', 'g');
+    const textToAnalyzeWithoutNewlines = this.textToAnalyze.replace('\n', '');
+    const chunks = _.sortBy(textToAnalyzeWithoutNewlines.match(chunkSizeRegex));
+    this.uniqueChunksEvent.emit(_.uniq(chunks));
   }
 
 }
