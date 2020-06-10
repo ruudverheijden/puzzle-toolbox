@@ -1,0 +1,16 @@
+<textarea [(ngModel)]="textToAnalyze" (input)="analyzeText()" rows="5" cols="100"></textarea>
+<br/><br/>
+<table>
+    <tr>
+        <td>Number of characters:</td>
+        <td>{{result.numberOfChars}}</td>
+    </tr>
+    <tr>
+        <td>Number of unique characters:</td>
+        <td>{{result.numberOfUniqueChars}}</td>
+    </tr>
+    <tr>
+        <td>Unique characters:</td>
+        <td><span *ngFor="let uniqueChar of result.uniqueChars">{{ uniqueChar }} </span></td>
+    </tr>
+</table>
