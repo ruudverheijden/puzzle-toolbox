@@ -1,9 +1,15 @@
-<div style="text-align:center">
-  <h1>Puzzle Toolbox</h1>
+<mat-toolbar color="primary" class="navbar">
+  <div>Puzzle Toolbox</div>
+  <div>
+    <span>Text Analyzer</span>
+    <span>Decipher</span>
+  </div>
+</mat-toolbar>
 
-</div>
+<mat-card class="container">
+  <app-text-analyzer></app-text-analyzer>
+</mat-card>
 
-<app-text-analyzer></app-text-analyzer>
 
 
 <router-outlet></router-outlet>

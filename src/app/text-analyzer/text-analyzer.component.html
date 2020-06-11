@@ -1,4 +1,7 @@
-<textarea [(ngModel)]="textToAnalyze" (input)="analyzeText()" rows="5" cols="100"></textarea>
+<mat-form-field>
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput [(ngModel)]="textToAnalyze" (input)="analyzeText()" placeholder="Ex. It makes me feel..."></textarea>
+</mat-form-field>
 <br/><br/>
 <table>
     <tr>

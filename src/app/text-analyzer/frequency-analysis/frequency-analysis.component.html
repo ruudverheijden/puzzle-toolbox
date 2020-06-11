@@ -1,4 +1,4 @@
 <input [(ngModel)]="chunkSize" (input)="analyseFrequency()" type="number" min="1" max="9" step="1">
 
 <br>
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+<mat-slider [(ngModel)]="chunkSize" (input)="analyseFrequency()" min="1" max="9" step="1" thumbLabel="true"></mat-slider>
